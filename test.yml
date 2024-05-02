@@ -1,0 +1,17 @@
+---
+- name: Deploy EPH – UPI
+  hosts: all
+  tasks:
+   - name: Load file paths
+     set_facts:
+       paths: "{{ lookup('ansible.builtin.file','files.yml') | from_yaml }}"
+   - name: Take Backup and restore latest files
+     shell: |
+       mv "{{ item['old_file'] }}" /etc/backup/
+       mv "{{ item['new_file'] }}" "{{ item['old_file'] }}"
+     loop: "{{ paths }}"
+   - name: Provide permissions to files
+     ansible.builtin.file:
+      path: "{{ item }}"
+      mode: '777'
+     loop: "{{ paths }}" 
