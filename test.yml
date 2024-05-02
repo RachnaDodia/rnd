@@ -3,7 +3,7 @@
   hosts: all
   tasks:
    - name: Load file paths
-     set_facts:
+     set_fact:
        paths: "{{ lookup('ansible.builtin.file','files.yml') | from_yaml }}"
    - name: Take Backup and restore latest files
      shell: |
