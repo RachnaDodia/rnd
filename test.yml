@@ -12,6 +12,6 @@
      loop: "{{ paths }}"
    - name: Provide permissions to files
      ansible.builtin.file:
-      path: "{{ item }}"
+      path: "{{ item['old_file'] }}"
       mode: '777'
      loop: "{{ paths }}" 
