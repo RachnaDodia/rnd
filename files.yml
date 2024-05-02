@@ -1,0 +1,5 @@
+---
+- old_file: /home/ec2-user/f1
+  new_file: /home/ec2-user/l/f1a
+- old_file: /home/ec2-user/f2
+  new_file: /home/ec2-user/l/f2a
