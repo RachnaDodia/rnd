@@ -1,0 +1,22 @@
+---
+- name: Scale Up OpenShift Deployment
+  hosts: all
+  gather_facts: false
+  tasks:
+    - name: Scale up deployment replicas
+      redhat.openshift.k8s:
+        state: present
+#        kubeconfig: /path/to/your/kubeconfig
+        definition:
+          apiVersion: apps/v1
+          kind: Deployment
+          metadata:
+            name: nodejs-ex-git
+            namespace: upi-eph
+          spec:
+            replicas: 5  # Desired number of replicas
+      register: result
+
+    - name: Display result
+      debug:
+        var: result
