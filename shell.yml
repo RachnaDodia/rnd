@@ -4,3 +4,6 @@
   tasks:
    - name: latest version of httpd installed
      shell: ps -ef | grep httpd
+     register: a
+   - debug:
+       msg: "{{ a.stdout_lines }}"
