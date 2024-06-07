@@ -1,0 +1,6 @@
+---
+- name: Enable intranet services
+  hosts: all
+  tasks:
+   - name: latest version of httpd installed
+     shell: ps -ef | grep httpd
